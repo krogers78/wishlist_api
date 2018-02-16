@@ -9,7 +9,7 @@ module.exports = app => {
 }
 // Get all the lists
 router.get('/list', (req, res, next) => {
-    WishList.find((err, lists) => {
+    WishList.find({ username: process.env.USERNAME }, (err, lists) => {
         if (err) return res.send(err);
         res.send(lists);
     });
@@ -37,7 +37,8 @@ router.post('/add-item', (req, res, body) => {
         // Create the list and add the item to the list if it doesn't exist
         } else {
             const newList = new WishList({
-                name: req.body.list
+                name: req.body.list,
+                username: process.env.USERNAME
             });
             newList.save((err, thatList) => {
                 if (err) return res.send(err);
@@ -50,3 +51,4 @@ router.post('/add-item', (req, res, body) => {
         }
     });
 });
+
