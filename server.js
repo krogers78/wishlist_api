@@ -2,7 +2,6 @@ var NODE_ENV = process.env.NODE_ENV || 'development';
 
 if (NODE_ENV === 'development') {
     require('dotenv').load();
-    console.log('process.env.MONGO_HOST', process.env.MONGO_HOST);
 }
 
 var express = require('express');
