@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const WishList = require('../models/wishlist.js');
 
 
-mongoose.connect('mongodb://localhost/wishlist');
-
+mongoose.connect('mongodb://kloe:qwaszx@ds239638.mlab.com:39638/wishlist');
+// mongodb://localhost/wishlist
+// mongodb://bradrules:rules@ds239638.mlab.com:39638/wishlist
 
 const products = [
     new WishList({
