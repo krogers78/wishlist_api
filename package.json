@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/krogers78/wishlist_api#readme",
   "dependencies": {
+    "amazon-product-api": "^0.4.4",
     "body-parser": "^1.15.2",
+    "co": "^4.6.0",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "glob": "^7.1.1",
