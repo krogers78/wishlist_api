@@ -3,7 +3,7 @@ const glob = require('glob');
 const db = require('./db');
 
 module.exports = function (app) {
-    app.use(bodyParser.json());
+    app.use(bodyParser.json({ limit: '50mb' }));
     app.use(bodyParser.urlencoded({ extended: false }));
 
 

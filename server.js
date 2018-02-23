@@ -10,6 +10,7 @@ const app = express();
 
 
 app.use(express.static(path.join(__dirname, 'app/assets')));
+
 const port = 3000;
 
 app.listen(port, function () {

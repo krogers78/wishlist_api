@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Amazon = require('amazon-product-api');
-const testing = require('../assets/testing.json');
 
 const WishList = mongoose.model('WishList');
 
@@ -56,22 +55,8 @@ router.post('/add-item', (req, res, body) => {
         }
     });
 });
-
+// Get product suggestions based on items in the database
 router.get('/suggested', (req, res, next) => {
-    // let products = []
-    // testing.forEach(e => {
-    //     if (e.Offers[0].TotalOffers[0] > 0) {    
-    //         products = [...products, {
-    //             title: e.ItemAttributes[0].Title[0],
-    //             price: e.Offers[0].Offer[0].OfferListing[0].Price[0].FormattedPrice,
-    //             image: e.MediumImage[0].URL[0]
-    //         }];
-    //     }
-    // })
-    // res.send(products)
-
-
-
     const client = Amazon.createClient({
         awsId: process.env.AWS_KEY,
         awsSecret: process.env.AWS_SECRET,
@@ -93,7 +78,6 @@ router.get('/suggested', (req, res, next) => {
             if (err) return res.send(err);
             
                 let products = [];
-                // console.log(results);  // products (Array of Object)
                 results.forEach(e => {
                     if (e.Offers[0].TotalOffers[0] > 0) {
                         products = [...products, {
@@ -104,10 +88,6 @@ router.get('/suggested', (req, res, next) => {
                     }
                 });
                 res.send(products);
-                // res.send(results);
-                console.log(response); // response (Array where the first element is an Object that contains Request, Item, etc.) 
             });
-        // res.json(lists);
     });
- 
 });
